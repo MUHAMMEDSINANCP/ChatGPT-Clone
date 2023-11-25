@@ -51,13 +51,26 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(AssetsManager.openaiLogo),
         ),
-        title: const Text("ChatGPT"),
+        centerTitle: true,
+        title: const Text(
+          "ChatGPT",
+          style: TextStyle(
+            letterSpacing: 3,
+            color: Colors.white70,
+            fontWeight: FontWeight.bold,
+            fontSize: 23,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () async {
               await Services.showModalSheet(context: context);
             },
-            icon: const Icon(Icons.more_vert_rounded, color: Colors.white),
+            icon: const Icon(
+              Icons.more_vert_rounded,
+              color: Colors.white70,
+              size: 31,
+            ),
           ),
         ],
       ),
@@ -66,6 +79,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Flexible(
               child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   controller: _listScrollController,
                   itemCount: chatProvider.getChatList.length, //chatList.length,
                   itemBuilder: (context, index) {
@@ -88,39 +102,69 @@ class _ChatScreenState extends State<ChatScreen> {
             const SizedBox(
               height: 15,
             ),
-            Material(
-              color: cardColor,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        focusNode: focusNode,
-                        style: const TextStyle(color: Colors.white),
-                        controller: textEditingController,
-                        onSubmitted: (value) async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        decoration: const InputDecoration.collapsed(
-                            hintText: "How can I help you",
-                            hintStyle: TextStyle(color: Colors.grey)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 21),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Material(
+                      borderRadius: BorderRadius.circular(45),
+                      color: cardColor,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 22, vertical: 14),
+                              child: TextField(
+                                focusNode: focusNode,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                                controller: textEditingController,
+                                onSubmitted: (value) async {
+                                  await sendMessageFCT(
+                                      modelsProvider: modelsProvider,
+                                      chatProvider: chatProvider);
+                                },
+                                decoration: const InputDecoration.collapsed(
+                                  hintText: "How can I help you ?",
+                                  hintStyle: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    IconButton(
-                        onPressed: () async {
-                          await sendMessageFCT(
-                              modelsProvider: modelsProvider,
-                              chatProvider: chatProvider);
-                        },
-                        icon: const Icon(
-                          Icons.send,
-                          color: Colors.white,
-                        ))
-                  ],
-                ),
+                  ),
+                  const SizedBox(
+                    width: 13,
+                  ),
+                  Container(
+                    height: 43,
+                    width: 43,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(35),
+                      color: cardColor,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: IconButton(
+                          onPressed: () async {
+                            await sendMessageFCT(
+                                modelsProvider: modelsProvider,
+                                chatProvider: chatProvider);
+                          },
+                          icon: const Icon(
+                            Icons.send,
+                            color: Colors.white,
+                          )),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -157,6 +201,7 @@ class _ChatScreenState extends State<ChatScreen> {
             label: "Please type a message",
           ),
           backgroundColor: Colors.red,
+          duration: Duration(seconds: 1), // Set the duration to 2 seconds
         ),
       );
       return;

@@ -45,3 +45,4 @@ app.*.map.json
 
 
 api_consts.dart
+my_api_key.dart

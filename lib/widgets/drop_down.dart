@@ -36,16 +36,21 @@ class _ModelsDrowDownWidgetState extends State<ModelsDrowDownWidget> {
             );
           }
           if (snapshot.hasError) {
-            return Center(
-              child: TextWidget(label: snapshot.error.toString()),
+            return const Center(
+              child: TextWidget(
+                label: "Oops!! No Model to show.",
+                fontSize: 16,
+                color: Colors.redAccent,
+              ),
+              // child: TextWidget(label: snapshot.error.toString()),
             );
-          }
+          }          
           return snapshot.data == null || snapshot.data!.isEmpty
               ? const SizedBox.shrink()
               : FittedBox(
                   child: DropdownButton(
                     dropdownColor: scaffoldBackgroundColor,
-                    iconEnabledColor: Colors.white,
+                    iconEnabledColor: Colors.white,             
                     items: List<DropdownMenuItem<String>>.generate(
                         snapshot.data!.length,
                         (index) => DropdownMenuItem(
