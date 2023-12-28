@@ -1,16 +1,18 @@
-# chat_gpt_clone
 
-A new Flutter project.
+## ChatGPT Clone
 
-## Getting Started
+A ChatGPT-inspired application powered by the ChatGPT API key, utilizing Provider for efficient state management.
 
-This project is a starting point for a Flutter application.
+### Key Features:
+ChatGPT API Integration: Utilizes the capabilities of ChatGPT for conversational interactions.
+Provider State Management: Ensures efficient and responsive app-wide state handling.
+ChatGPT-like Experience: Aims to replicate the conversational capabilities of ChatGPT within the app.
 
-A few resources to get you started if this is your first Flutter project:
+### Usage:
+The ChatGPT Clone app provides users with an experience akin to interacting with ChatGPT, utilizing the ChatGPT API key for intelligent and engaging conversations. With Provider for state management, the app ensures smooth functionality and responsiveness.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Feedback:
+For any suggestions or feedback, please reach out at cpmuhammedsinan@gmail.com. Your insights are valuable in enhancing this ChatGPT Clone app.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Technologies Used:
+ChatGPT API, Provider for State Management
